@@ -22,6 +22,7 @@ let box_height = 10;
 let svg_serial = 0;
 
 const cols = {};
+const geomorphs = {};
 let black;
 
 function getSVGID()
@@ -31,6 +32,7 @@ function getSVGID()
 	return ret;
 }
 
+// TODO remove
 function drawPolygon( shape, T, f, s, w )
 {
 	if( f != null ) {
@@ -97,14 +99,20 @@ class HatTile
 
 	draw( S, level )
 	{
-		drawPolygon( 
-			hat_outline, S, cols[this.label].color(), black, 1 );
+    // TODO need to draw geomorph
+    // drawPolygon(
+		//	hat_outline, S, cols[this.label].color(), black, 1 );
 	}
 
 	resetSVG()
 	{
 		this.svg_id = null;
 	}
+
+  writeSVG(transform)
+  {
+    return `    <use xlink:href="#${id}" transform="matrix(${T[0]} ${T[3]} ${T[1]} ${T[4]} ${T[2]} ${T[5]})"/>`;
+  }
 
 	buildSVGDefs( stream, sc )
 	{
@@ -113,8 +121,25 @@ class HatTile
 		}
 
 		this.svg_id = getSVGID();
-		stream.push( polygonToSVG( hat_outline, this.svg_id, 
-			cols[this.label].color(), black, lw_scale/sc ) );
+
+    let group = document.createElement('g');
+    group.setAttribute('id', this.svg_id);
+
+    const geomorph = geomorphs[this.label];
+    const kids = geomorph.documentElement.childNodes;
+    for (const kid of kids) {
+      group.appendChild(kid);
+    }
+
+    console.log("Pushing XML:" + group.outerHTML + ' with ');
+    console.log(group);
+
+		stream.push(
+      group.outerHTML
+      //geomorphs[this.label]
+      // polygonToSVG( hat_outline, this.svg_id,
+			// cols[this.label].color(), black, lw_scale/sc )
+    );
 	}
 
 	getSVGStrokeID()
@@ -130,7 +155,7 @@ class HatTile
 	getText( stream, T )
 	{
 		// Write out the top two rows of an affine transformation matrix
-		// giving the location of this hat, together with the type of 
+		// giving the location of this hat, together with the type of
 		// this tile.
 		stream.push( `${this.label} ${T[0]} ${T[1]} ${T[2]} ${T[3]} ${T[4]} ${T[5]}` )
 	}
@@ -231,7 +256,7 @@ class MetaTile
 				stream.push( getSVGInstance( sid, ch.T ) );
 			}
 		}
-		stream.push( polygonToSVG( this.shape, 
+		stream.push( polygonToSVG( this.shape,
 			null, null, black, this.width*lw_scale/sc ) );
 
 		stream.push( '  </g>' );
@@ -267,21 +292,21 @@ const H_init = (function () {
 		pt( 2.5, 5 * hr3 ), pt( 1.5, 5 * hr3 ), pt( -0.5, hr3 ) ];
 	const meta = new MetaTile( H_outline, 2 );
 
-	meta.addChild( 
-		matchTwo( 
+	meta.addChild(
+		matchTwo(
 			hat_outline[5], hat_outline[7], H_outline[5], H_outline[0] ),
 		H_hat );
-	meta.addChild( 
-		matchTwo( 
+	meta.addChild(
+		matchTwo(
 			hat_outline[9], hat_outline[11], H_outline[1], H_outline[2] ),
 		H_hat );
-	meta.addChild( 
-		matchTwo( 
+	meta.addChild(
+		matchTwo(
 			hat_outline[5], hat_outline[7], H_outline[3], H_outline[4] ),
 		H_hat );
-	meta.addChild( 
-		mul( ttrans( 2.5, hr3 ), 
-			mul( 
+	meta.addChild(
+		mul( ttrans( 2.5, hr3 ),
+			mul(
 				[-0.5,-hr3,0,hr3,-0.5,0],
 				[0.5,0,0,0,-0.5,0] ) ),
 		H1_hat );
@@ -293,7 +318,7 @@ const T_init = (function () {
 		pt( 0, 0 ), pt( 3, 0 ), pt( 1.5, 3 * hr3 ) ];
 	const meta = new MetaTile( T_outline, 2 );
 
-	meta.addChild( 
+	meta.addChild(
 		[0.5, 0, 0.5, 0, 0.5, hr3],
 		T_hat );
 
@@ -301,15 +326,15 @@ const T_init = (function () {
 
 const P_init = (function () {
 	const P_outline = [
-		pt( 0, 0 ), pt( 4, 0 ), 
+		pt( 0, 0 ), pt( 4, 0 ),
 		pt( 3, 2 * hr3 ), pt( -1, 2 * hr3 ) ];
 	const meta = new MetaTile( P_outline, 2 );
 
-	meta.addChild( 
+	meta.addChild(
 		[0.5, 0, 1.5, 0, 0.5, hr3],
 		P_hat );
-	meta.addChild( 
-		mul( ttrans( 0, 2 * hr3 ), 
+	meta.addChild(
+		mul( ttrans( 0, 2 * hr3 ),
 			mul( [0.5, hr3, 0, -hr3, 0.5, 0],
 				 [0.5, 0.0, 0.0, 0.0, 0.5, 0.0] ) ),
 		P_hat );
@@ -318,15 +343,15 @@ const P_init = (function () {
 
 const F_init = (function () {
 	const F_outline = [
-		pt( 0, 0 ), pt( 3, 0 ), 
+		pt( 0, 0 ), pt( 3, 0 ),
 		pt( 3.5, hr3 ), pt( 3, 2 * hr3 ), pt( -1, 2 * hr3 ) ];
 	const meta = new MetaTile( F_outline, 2 );
 
-	meta.addChild( 
+	meta.addChild(
 		[0.5, 0, 1.5, 0, 0.5, hr3],
 		F_hat );
-	meta.addChild( 
-		mul( ttrans( 0, 2 * hr3 ), 
+	meta.addChild(
+		mul( ttrans( 0, 2 * hr3 ),
 			mul( [0.5, hr3, 0, -hr3, 0.5, 0],
 				 [0.5, 0.0, 0.0, 0.0, 0.5, 0.0] ) ),
 		F_hat );
@@ -353,7 +378,7 @@ function constructPatch( H, T, P, F )
 		[13, 0, 'F', 3],
 		[14, 2, 'F', 1],
 		[15, 3, 'H', 4],
-		[8, 2, 'F', 1], 
+		[8, 2, 'F', 1],
 		[17, 3, 'H', 0],
 		[18, 2, 'P', 0],
 		[19, 2, 'H', 2],
@@ -364,7 +389,7 @@ function constructPatch( H, T, P, F )
 		[23, 0, 'F', 3],
 		[16, 0, 'P', 2],
 		[9, 4, 0, 2, 'T', 2],
-		[4, 0, 'F', 3] 
+		[4, 0, 'F', 3]
 		];
 
 	ret = new MetaTile( [], H.width );
@@ -434,7 +459,7 @@ function constructMetatiles( patch )
 		new_P.addChild( patch.children[ch].T, patch.children[ch].geom );
 	}
 
-	const new_F_outline = [ 
+	const new_F_outline = [
 		bps2, patch.evalChild( 24, 2 ), patch.evalChild( 25, 0 ),
 		p252, padd( p252, psub( llc, bps1 ) ) ];
 	const new_F = new MetaTile( new_F_outline, patch.width * 2 );
@@ -443,7 +468,7 @@ function constructMetatiles( patch )
 	}
 	
 	const AAA = new_H_outline[2];
-	const BBB = padd( new_H_outline[1], 
+	const BBB = padd( new_H_outline[1],
 		psub( new_H_outline[4], new_H_outline[5] ) );
 	const CCC = transPt( rotAbout( BBB, -PI/3 ), AAA );
 	const new_T_outline = [BBB,CCC,AAA];
@@ -524,6 +549,7 @@ function setup() {
 	};
 
 	let count = 0;
+  let geomorphsLoading = [];
 	for( let [name, col] of Object.entries( cp_info ) ) {
 		const label = createSpan( name );
 		label.position( 10 + 70*count, box_height );
@@ -537,152 +563,169 @@ function setup() {
 			count = 0;
 			box_height += 50;
 		}
+
+    // TODO: better to use XmlHttpRequest with its automatic parsing?
+    let parser = new DOMParser();
+    let promise = fetch('./geomorphs/' + name + '.svg').
+      then(response => response.text()).
+      then(svg => geomorphs[name] = parser.parseFromString(svg, 'image/svg+xml'));
+    geomorphsLoading.push(promise);
 	}
 	if( count == 1 ) {
 		box_height += 50;
 	}
 	box_height += 20;
 
-	translate_button = addButton( "Translate", function() {
-		setButtonActive( translate_button, true );
-		setButtonActive( scale_button, false );
-		loop();
-	} );
-	scale_button = addButton( "Scale", function() {
-		setButtonActive( translate_button, false );
-		setButtonActive( scale_button, true );
-		loop();
-	} );
+  console.log("Loading geomorphs...");
+  Promise.all(geomorphsLoading).then(function() {
+    console.log("Geomorphs loaded!");
+    defineDependentFunctions();
 
-	setButtonActive( translate_button, true );
-	box_height += 10;
+  	translate_button = addButton( "Translate", function() {
+	  	setButtonActive( translate_button, true );
+		  setButtonActive( scale_button, false );
+  		loop();
+	  } );
+  	scale_button = addButton( "Scale", function() {
+	  	setButtonActive( translate_button, false );
+		  setButtonActive( scale_button, true );
+  		loop();
+	  } );
+
+  	setButtonActive( translate_button, true );
+	  box_height += 10;
 	
-	draw_hats = addButton( "Draw Hats", function() {
-		setButtonActive( draw_hats, !isButtonActive( draw_hats ) );
-		loop();
-	} );
-	draw_super = addButton( "Draw Supertiles", function() {
-		setButtonActive( draw_super, !isButtonActive( draw_super ) );
-		loop();
-	} );
+  	draw_hats = addButton( "Draw Hats", function() {
+	  	setButtonActive( draw_hats, !isButtonActive( draw_hats ) );
+		  loop();
+  	} );
+	  draw_super = addButton( "Draw Supertiles", function() {
+		  setButtonActive( draw_super, !isButtonActive( draw_super ) );
+  		loop();
+	  } );
 
-	setButtonActive( draw_hats, true );
-	setButtonActive( draw_super, true );
-	box_height += 10;
+  	setButtonActive( draw_hats, true );
+	  setButtonActive( draw_super, true );
+  	box_height += 10;
 
-	addButton( "Save PNG", function () {
-		uibox = false;
-		draw();
-		save( "output.png" );
-		uibox = true;
-		draw();
-	} );
+	  addButton( "Save PNG", function () {
+		  uibox = false;
+  		draw();
+	  	save( "output.png" );
+		  uibox = true;
+  		draw();
+	  } );
 
-	addButton( "Save SVG", function () {
-		svg_serial = 0;
-		for( let t of tiles ) {
-			t.resetSVG();
-		}
+  	addButton( "Save SVG", function () {
+	  	svg_serial = 0;
+		  for( let t of tiles ) {
+			  t.resetSVG();
+  		}
 
-		const stream = [];
-		stream.push( `<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">` );
-		stream.push( '<defs>' );
-		for( let t of tiles ) {
-			t.buildSVGDefs( stream, mag( to_screen[0], to_screen[1] ) );
-		}
-		stream.push( '</defs>' );
+	  	const stream = [];
+      // TODO: should strip out Inkscape defs rather than including here
+		  stream.push( `<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">` );
+  		stream.push( '<defs>' );
+		  for( let t of tiles ) {
+  			t.buildSVGDefs( stream, mag( to_screen[0], to_screen[1] ) );
+	  	}
+		  stream.push( '</defs>' );
 
-		const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
-		const S = mul( ttrans( width/2, height/2 ), to_screen );
+  		const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
+	  	const S = mul( ttrans( width/2, height/2 ), to_screen );
 
-		if( isButtonActive( draw_hats ) ) {
-			stream.push( getSVGInstance( tiles[idx].getSVGFillID(), S ) );
-		}
-		if( isButtonActive( draw_super ) ) {
-			stream.push( getSVGInstance( tiles[idx].getSVGStrokeID(), S ) );
-		}
-		stream.push( '</svg>' );
+		  if( isButtonActive( draw_hats ) ) {
+			  stream.push( getSVGInstance( tiles[idx].getSVGFillID(), S ) );
+  		}
+		  if( isButtonActive( draw_super ) ) {
+  			stream.push( getSVGInstance( tiles[idx].getSVGStrokeID(), S ) );
+		  }
+  		stream.push( '</svg>' );
 
-		saveStrings( stream, 'output', 'svg' );
-	} );
+	  	saveStrings( stream, 'output', 'svg' );
+  	} );
 
-	addButton( "Save Matrices", function() {
-		const stream = [];
-		const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
-		tiles[idx].getText( stream, ident );
-		saveStrings( stream, 'output', 'txt' );
-	} );
+	  addButton( "Save Matrices", function() {
+		  const stream = [];
+  		const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
+	  	tiles[idx].getText( stream, ident );
+		  saveStrings( stream, 'output', 'txt' );
+  	} );
 
-	box_height -= 5; // remove half the padding
+	  box_height -= 5; // remove half the padding
+  }).
+    catch(e => alert("Error loading geomorphs:\n" + e));
 }
 
-function draw()
-{
-	background( 255 );
+function defineDependentFunctions() {
+  window.draw = function()
+  {
+  	background( 255 );
 
-	push();
-	translate( width/2, height/2 );
-	const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
+  	push();
+  	translate( width/2, height/2 );
+  	const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
 
-	if( isButtonActive( draw_hats ) ) {
-		tiles[idx].draw( to_screen, level );
-	}
+  	if( isButtonActive( draw_hats ) ) {
+  		tiles[idx].draw( to_screen, level );
+  	}
 
-	if( isButtonActive( draw_super ) ) {
-		for( let lev = level - 1; lev >= 0; --lev ) {
-			tiles[idx].draw( to_screen, lev );
-		}
-	}
-	pop();
+  	if( isButtonActive( draw_super ) ) {
+  		for( let lev = level - 1; lev >= 0; --lev ) {
+  			tiles[idx].draw( to_screen, lev );
+  		}
+  	}
+  	pop();
 
-	if( uibox ) {
-		stroke( 0 );
-		strokeWeight( 0.5 );
-		fill( 255, 220 );
-		rect( 5, 5, 135, box_height);
-	}
-	noLoop();
-}
+  	if( uibox ) {
+  		stroke( 0 );
+  		strokeWeight( 0.5 );
+  		fill( 255, 220 );
+  		rect( 5, 5, 135, box_height);
+  	}
+  	noLoop();
+  }
 
-function windowResized() 
-{
-	resizeCanvas( windowWidth, windowHeight );
-}
+  window.windowResized = function ()
+  {
+  	resizeCanvas( windowWidth, windowHeight );
+  }
 
-function mousePressed()
-{
-	dragging = true;
-	if( isButtonActive( scale_button ) ) {
-		scale_centre = transPt( inv( to_screen ), pt( width/2, height/2 ) );
-		scale_start = pt( mouseX, mouseY );
-		scale_ts = [...to_screen];
-	}
-	loop();
-}
+  window.mousePressed = function()
+  {
+  	dragging = true;
+  	if( isButtonActive( scale_button ) ) {
+  		scale_centre = transPt( inv( to_screen ), pt( width/2, height/2 ) );
+  		scale_start = pt( mouseX, mouseY );
+  		scale_ts = [...to_screen];
+  	}
+  	loop();
+  }
 
-function mouseDragged()
-{
-	if( dragging ) {
-		if( isButtonActive( translate_button ) ) {
-			to_screen = mul( ttrans( mouseX - pmouseX, mouseY - pmouseY ), 
-				to_screen );
-		} else if( isButtonActive( scale_button ) ) {
-			let sc = dist( mouseX, mouseY, width/2, height/2 ) / 
-				dist( scale_start.x, scale_start.y, width/2, height/2 );
-			to_screen = mul( 
-				mul( ttrans( scale_centre.x, scale_centre.y ),
-					mul( [sc, 0, 0, 0, sc, 0],
-						ttrans( -scale_centre.x, -scale_centre.y ) ) ),
-				scale_ts );
-			lw_scale = mag( to_screen[0], to_screen[1] ) / 20.0;
-		}
-		loop();
-		return false;
-	} 
-}
+  window.mouseDragged = function()
+  {
+  	if( dragging ) {
+  		if( isButtonActive( translate_button ) ) {
+  			to_screen = mul( ttrans( mouseX - pmouseX, mouseY - pmouseY ),
+  				to_screen );
+  		} else if( isButtonActive( scale_button ) ) {
+  			let sc = dist( mouseX, mouseY, width/2, height/2 ) /
+  				dist( scale_start.x, scale_start.y, width/2, height/2 );
+  			to_screen = mul(
+  				mul( ttrans( scale_centre.x, scale_centre.y ),
+  					mul( [sc, 0, 0, 0, sc, 0],
+  						ttrans( -scale_centre.x, -scale_centre.y ) ) ),
+  				scale_ts );
+  			lw_scale = mag( to_screen[0], to_screen[1] ) / 20.0;
+  		}
+  		loop();
+  		return false;
+  	}
+  }
 
-function mouseReleased()
-{
-	dragging = false;
-	loop();
+  window.mouseReleased = function()
+  {
+	  dragging = false;
+  	loop();
+  }
 }

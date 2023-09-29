@@ -624,7 +624,7 @@ function setup() {
 
       const stream = [];
       // TODO: should strip out Inkscape defs rather than including here
-      stream.push( `<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">` );
+      stream.push( `<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >` );
       stream.push( '<defs>' );
       for( let t of tiles ) {
         t.buildSVGDefs( stream, mag( to_screen[0], to_screen[1] ) );

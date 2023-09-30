@@ -100,7 +100,7 @@ class HatTile
   draw( S, level )
   {
     var svg = new Image();
-    svg.src = '/geomorphs/' + this.label + '.svg';
+    svg.src = '/assets/' + this.label + '.svg';
 
     // Save P5 transform before drawing our own.
     var oldTransform = drawingContext.getTransform();
@@ -122,7 +122,7 @@ class HatTile
     drawingContext.setTransform(oldTransform);
 
     drawPolygon(
-      hat_outline, S, cols[this.label].color(), black, 1 );
+      hat_outline, S, null, black, 1 );
   }
 
   resetSVG()
@@ -587,7 +587,7 @@ function setup() {
 
     // TODO: better to use XmlHttpRequest with its automatic parsing?
     let parser = new DOMParser();
-    let promise = fetch('./geomorphs/' + name + '.svg').
+    let promise = fetch('./assets/' + name + '.svg').
       then(response => response.text()).
       then(svg => geomorphs[name] = parser.parseFromString(svg, 'image/svg+xml').documentElement);
     geomorphsLoading.push(promise);

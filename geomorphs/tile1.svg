@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="132.82454mm"
+   height="183.13205mm"
+   viewBox="0 0 132.82454 183.13205"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="tile1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-center="true"
+     fit-margin-top="0.2"
+     lock-margins="true"
+     fit-margin-left="0.2"
+     fit-margin-right="0.2"
+     fit-margin-bottom="0.2"
+     inkscape:zoom="0.97134925"
+     inkscape:cx="62.284498"
+     inkscape:cy="-41.694581"
+     inkscape:window-width="1850"
+     inkscape:window-height="1016"
+     inkscape:window-x="70"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1594"
+     inkscape:snap-page="true">
+    <inkscape:grid
+       type="axonomgrid"
+       id="grid826"
+       empcolor="#03ff92"
+       empopacity="0.25098039"
+       empspacing="6"
+       spacingy="10"
+       originx="-24.414737"
+       originy="76.566023" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-24.414737,76.566026)">
+    <g
+       id="g1594"
+       inkscape:transform-center-x="-38.971142"
+       inkscape:transform-center-y="-44.999997">
+      <g
+         id="g443"
+         transform="matrix(0,-1,-1,0,84.414739,27.357029)"
+         inkscape:transform-center-x="2.3241212"
+         inkscape:transform-center-y="12.990389">
+        <path
+           style="opacity:1;fill:none;stroke:#999999;stroke-width:2;stroke-opacity:1;stop-color:#000000"
+           d="M 103.92305,59.999998 129.90381,105 155.88457,89.999999 V 30 l -25.98076,-15 25.98076,-45 -25.98076,-45 -25.98076,15.000002 V -30 H 51.961523 L 25.980762,15 51.961523,30 v 29.999998 z"
+           id="border"
+           sodipodi:nodetypes="cccccccccccccc" />
+        <g
+           id="dungeon">
+          <path
+             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
+             d="M 69.282031,59.999998 V 20 L 34.641017,0"
+             id="path1352" />
+          <path
+             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
+             d="M 43.301269,-15 69.282031,0 v -30"
+             id="path1488" />
+          <path
+             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
+             d="m 86.60254,-30 v 20 l 34.64101,-20 v -20 l 17.32051,-9.999998"
+             id="path1490" />
+          <path
+             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
+             d="m 147.22432,-44.999999 -8.66026,5 V -20 l 8.66026,5"
+             id="path1492" />
+          <path
+             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
+             d="M 138.56406,0 121.24355,-10 86.60254,10 138.56406,39.999999 V 79.999998 L 121.24355,89.999999"
+             id="path1494" />
+          <path
+             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
+             d="m 112.5833,75 8.66025,-5.000001 V 50 L 86.60254,30 v 29.999998"
+             id="path1496" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

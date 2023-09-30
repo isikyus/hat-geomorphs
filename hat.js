@@ -109,7 +109,7 @@ class HatTile
       // is using to what plain JS expects.
       // See also https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setTransform
       //drawingContext.transform(S[0], S[2], S[4], S[1], S[3], S[5]);
-      drawingContext.transform(1, 0, 0, 1, 0, 0);
+      drawingContext.transform(1, 0, 0, 1, S[2], S[5]);
 
       // Scale down tiles to match hatviz sizing.
       drawingContext.scale(1/12.0, 1/12.0);

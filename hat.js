@@ -120,9 +120,6 @@ class HatTile
       console.log(S);
     }
     drawingContext.setTransform(oldTransform);
-
-    drawPolygon(
-      hat_outline, S, null, black, 1 );
   }
 
   resetSVG()

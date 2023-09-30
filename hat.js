@@ -99,9 +99,30 @@ class HatTile
 
   draw( S, level )
   {
-    // TODO need to draw geomorph
-    // drawPolygon(
-    //  hat_outline, S, cols[this.label].color(), black, 1 );
+    var svg = new Image();
+    svg.src = '/geomorphs/' + this.label + '.svg';
+
+    // Save P5 transform before drawing our own.
+    var oldTransform = drawingContext.getTransform();
+    {
+      // Read matrix sideways to convert from affine format Hatviz
+      // is using to what plain JS expects.
+      // See also https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setTransform
+      //drawingContext.transform(S[0], S[2], S[4], S[1], S[3], S[5]);
+      drawingContext.transform(1, 0, 0, 1, 0, 0);
+
+      // Scale down tiles to match hatviz sizing.
+      drawingContext.scale(1/12.0, 1/12.0);
+
+      drawingContext.drawImage(svg, 0, 0);
+
+      console.log(drawingContext.getTransform());
+      console.log(S);
+    }
+    drawingContext.setTransform(oldTransform);
+
+    drawPolygon(
+      hat_outline, S, cols[this.label].color(), black, 1 );
   }
 
   resetSVG()
@@ -126,7 +147,7 @@ class HatTile
     group.setAttribute('id', this.svg_id);
 
     const geomorph = geomorphs[this.label];
-    const kids = geomorph.documentElement.childNodes;
+    const kids = geomorph.childNodes;
     for (const kid of kids) {
       group.appendChild(kid);
     }
@@ -466,7 +487,7 @@ function constructMetatiles( patch )
   for( let ch of [21,20,22,23,24,25] ) {
     new_F.addChild( patch.children[ch].T, patch.children[ch].geom );
   }
-  
+
   const AAA = new_H_outline[2];
   const BBB = padd( new_H_outline[1],
     psub( new_H_outline[4], new_H_outline[5] ) );
@@ -568,7 +589,7 @@ function setup() {
     let parser = new DOMParser();
     let promise = fetch('./geomorphs/' + name + '.svg').
       then(response => response.text()).
-      then(svg => geomorphs[name] = parser.parseFromString(svg, 'image/svg+xml'));
+      then(svg => geomorphs[name] = parser.parseFromString(svg, 'image/svg+xml').documentElement);
     geomorphsLoading.push(promise);
   }
   if( count == 1 ) {
@@ -594,7 +615,7 @@ function setup() {
 
     setButtonActive( translate_button, true );
     box_height += 10;
-  
+
     draw_hats = addButton( "Draw Hats", function() {
       setButtonActive( draw_hats, !isButtonActive( draw_hats ) );
       loop();

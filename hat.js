@@ -111,8 +111,13 @@ class HatTile
       drawingContext.transform(S[0], S[3], S[1], S[4], S[2], S[5]);
 
       // Scale down tiles to match hatviz sizing.
-      const tileScale = 1/115.0;
+      const tileScale = 1/84.0;
       drawingContext.scale(tileScale, tileScale);
+
+      // Also translate, to account for the fact the Hatviz origin
+      // isn't at the corner of the SVG, which is the only place
+      // Inkscape lets me put it.
+      drawingContext.translate(-127.380, -359.778)
 
       drawingContext.drawImage(svg, 0, 0);
 

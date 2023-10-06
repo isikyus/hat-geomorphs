@@ -1,20 +1,7 @@
-geomorphs : ../assets/H.svg ../assets/H1.svg ../assets/F.svg ../assets/T.svg ../assets/P.svg
+geomorphs : ../assets/tile1.svg ../assets/tile2.svg ../assets/tile3.svg ../assets/tile3a.svg
 
 clean :
-	rm ../assets/H.svg ../assets/H1.svg ../assets/F.svg ../assets/T.svg ../assets/P.svg
+	rm ../assets/tile1.svg ../assets/tile2.svg ../assets/tile3.svg ../assets/tile3a.svg 
 
-../assets/H.svg : tile1.svg
-	inkscape -l -o ../assets/H.svg tile1.svg
-
-../assets/H1.svg : tile1.svg
-	inkscape -l -o ../assets/H1.svg tile1.svg
-
-../assets/F.svg : tile1.svg
-	inkscape -l -o ../assets/F.svg tile1.svg
-
-../assets/T.svg : tile1.svg
-	inkscape -l -o ../assets/T.svg tile1.svg
-
-../assets/P.svg : tile1.svg
-	inkscape -l -o ../assets/P.svg tile1.svg
-
+../assets/%.svg : %.svg
+	inkscape -l -o $@ $<

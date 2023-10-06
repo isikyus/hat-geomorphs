@@ -22,6 +22,13 @@ let box_height = 10;
 let svg_serial = 0;
 
 const cols = {};
+
+const geomorph_names = [
+  'tile1',
+  'tile2',
+  'tile3',
+  'tile3a'
+];
 const geomorphs = {};
 let black;
 
@@ -97,10 +104,14 @@ class HatTile
     this.svg_id = null;
   }
 
+  choose_geomorph() {
+    return random(geomorph_names);
+  };
+
   draw( S, level )
   {
     var svg = new Image();
-    svg.src = '/assets/' + this.label + '.svg';
+    svg.src = '/assets/' + this.choose_geomorph() + '.svg';
 
     // Save P5 transform before drawing our own.
     var oldTransform = drawingContext.getTransform();
@@ -586,7 +597,9 @@ function setup() {
       count = 0;
       box_height += 50;
     }
+  }
 
+  for ( let name of geomorph_names ) {
     // TODO: better to use XmlHttpRequest with its automatic parsing?
     let parser = new DOMParser();
     let promise = fetch('./assets/' + name + '.svg').
@@ -599,10 +612,14 @@ function setup() {
   }
   box_height += 20;
 
+  // Fix a random seed on page load so the image is consistent each time we draw
+  // it for the same base tile and number of levels.
+  const random_seed = random();
+
   console.log("Loading geomorphs...");
   Promise.all(geomorphsLoading).then(function() {
     console.log("Geomorphs loaded!");
-    defineDependentFunctions();
+    defineDependentFunctions(random_seed);
 
     translate_button = addButton( "Translate", function() {
       setButtonActive( translate_button, true );
@@ -658,6 +675,7 @@ function setup() {
       const S = mul( ttrans( width/2, height/2 ), to_screen );
 
       if( isButtonActive( draw_hats ) ) {
+        randomSeed(random_seed);
         stream.push( getSVGInstance( tiles[idx].getSVGFillID(), S ) );
       }
       if( isButtonActive( draw_super ) ) {
@@ -680,7 +698,7 @@ function setup() {
     catch(e => alert("Error loading geomorphs:\n" + e));
 }
 
-function defineDependentFunctions() {
+function defineDependentFunctions(random_seed) {
   window.draw = function()
   {
     background( 255 );
@@ -690,6 +708,7 @@ function defineDependentFunctions() {
     const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
 
     if( isButtonActive( draw_hats ) ) {
+      randomSeed(random_seed);
       tiles[idx].draw( to_screen, level );
     }
 

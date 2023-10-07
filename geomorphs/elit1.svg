@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="132.82454mm"
+   height="183.13205mm"
+   viewBox="-46.366 -53.116 182.732 96.257"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="elit1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:snap-bbox="true"
+     inkscape:snap-center="true"
+     fit-margin-top="0.2"
+     lock-margins="true"
+     fit-margin-left="0.2"
+     fit-margin-right="0.2"
+     fit-margin-bottom="0.2"
+     inkscape:zoom="1.3736953"
+     inkscape:cx="193.2743"
+     inkscape:cy="285.36168"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="dungeon"
+     inkscape:snap-page="true">
+    <inkscape:grid
+       type="axonomgrid"
+       id="grid826"
+       empcolor="#03ff92"
+       empopacity="0.25098039"
+       empspacing="6"
+       spacingy="3.333331"
+       originx="136.36608"
+       originy="50.033841"
+       gridanglex="60"
+       gridanglez="60" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-24.414737,76.566026)">
+    <g
+       id="g1594"
+       inkscape:transform-center-x="-38.971142"
+       inkscape:transform-center-y="-44.999997">
+      <g
+         id="g443"
+         transform="matrix(0,-1,-1,0,84.414762,27.357029)"
+         inkscape:transform-center-x="2.3241212"
+         inkscape:transform-center-y="12.990389">
+        <path
+           style="opacity:1;fill:#e6e6e6;stroke:none;stroke-width:2;stroke-opacity:1;stop-color:#000000"
+           d="M 103.92305,59.999998 129.90381,105 155.88457,89.999999 V 30 l -25.98076,-15 25.98076,-45 -25.98076,-45 -25.98076,15.000002 V -30 H 51.961523 L 25.980762,15 51.961523,30 v 29.999998 z"
+           id="border"
+           sodipodi:nodetypes="cccccccccccccc" />
+        <g
+           id="dungeon">
+          <path
+             id="path2230"
+             style="fill:none;stroke:#000000;stroke-width:3.77953;stop-color:#000000"
+             d="M 167.05798 335.8087 L 167.05883 335.81016 "
+             transform="matrix(0,-0.36399781,-0.36399781,0,234.88158,106.36602)" />
+          <path
+             id="path13898"
+             style="fill:#afdde9;fill-opacity:1;stroke:none;stroke-width:1.37574;stop-color:#000000"
+             d="m 103.92354,-60.223049 4.36231,2.518585 V 2.7415154 L 55.938097,32.964503 51.575785,30.445916 v 30.222989 l 4.362312,-7.555743 52.347753,-30.222988 v 30.222988 l 26.17387,15.111494 v 30.222988 l -4.36231,7.555746 26.17388,-15.111497 -4.36232,-2.518578 V 58.150327 l 4.36232,2.518578 V 30.445916 l -4.36232,7.555752 -17.44925,10.07433 -8.72462,-5.037165 V -67.778795 l 4.36231,-7.555746 -26.17387,15.111492"
+             sodipodi:nodetypes="ccccccccccccccccccccccc" />
+          <path
+             id="path2106"
+             style="fill:none;stroke:#000000;stroke-width:1.37574;stop-color:#000000"
+             d="m 103.95731,-60.174654 4.3651,2.516971 V 2.7495811 L 55.941218,32.953211 51.57612,30.436237 m 0,30.203631 4.365098,-7.550903 52.381192,-30.20363 v 30.20363 l 26.19058,15.101815 v 30.20363 l -4.36509,7.55091 m 26.1906,-15.101822 -4.3651,-2.516964 V 58.122903 l 4.3651,2.516965 m 0,-30.203631 -4.3651,7.550913 -17.46041,10.067877 -8.73018,-5.033939 V -67.725561 l 4.36509,-7.550907"
+             sodipodi:nodetypes="cccccccccccccccccccccc" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

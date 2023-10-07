@@ -29,6 +29,13 @@ const geomorph_names = [
   'tile3',
   'tile3a'
 ];
+const tiles_for_types = {
+  H: geomorph_names,
+  F: geomorph_names,
+  T: geomorph_names,
+  P: geomorph_names,
+  H1: ['elit1']
+};
 const geomorphs = {};
 let black;
 
@@ -105,7 +112,7 @@ class HatTile
   }
 
   choose_geomorph() {
-    return random(geomorph_names);
+    return random(tiles_for_types[this.label]);
   };
 
   draw( S, level )
@@ -599,13 +606,18 @@ function setup() {
     }
   }
 
-  for ( let name of geomorph_names ) {
-    // TODO: better to use XmlHttpRequest with its automatic parsing?
-    let parser = new DOMParser();
-    let promise = fetch('./assets/' + name + '.svg').
-      then(response => response.text()).
-      then(svg => geomorphs[name] = parser.parseFromString(svg, 'image/svg+xml').documentElement);
-    geomorphsLoading.push(promise);
+  for ( let key in tiles_for_types ) {
+    for ( let name of tiles_for_types[key] ) {
+      // TODO: better to use XmlHttpRequest with its automatic parsing?
+      let parser = new DOMParser();
+      let promise = fetch('./assets/' + name + '.svg').
+        then(response => response.text()).
+        then(svg => {
+          geomorphs[key] = geomorphs[key] || {};
+          geomorphs[key][name] = parser.parseFromString(svg, 'image/svg+xml').documentElement;
+        });
+      geomorphsLoading.push(promise);
+    }
   }
   if( count == 1 ) {
     box_height += 50;

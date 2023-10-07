@@ -30,16 +30,17 @@
      fit-margin-left="0.2"
      fit-margin-right="0.2"
      fit-margin-bottom="0.2"
-     inkscape:zoom="0.97134925"
-     inkscape:cx="22.13416"
-     inkscape:cy="394.81165"
+     inkscape:zoom="1.9426985"
+     inkscape:cx="277.19175"
+     inkscape:cy="368.81688"
      inkscape:window-width="1850"
      inkscape:window-height="1016"
-     inkscape:window-x="70"
+     inkscape:window-x="1990"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g1594"
-     inkscape:snap-page="true">
+     inkscape:current-layer="dungeon"
+     inkscape:snap-page="true"
+     inkscape:snap-grids="false">
     <inkscape:grid
        type="axonomgrid"
        id="grid826"
@@ -67,36 +68,26 @@
          inkscape:transform-center-x="2.3241212"
          inkscape:transform-center-y="12.990389">
         <path
-           style="opacity:1;fill:none;stroke:#999999;stroke-width:2;stroke-opacity:1;stop-color:#000000"
+           style="opacity:1;fill:#e6e6e6;stroke:none;stroke-width:2;stroke-opacity:1;stop-color:#000000"
            d="M 103.92305,59.999998 129.90381,105 155.88457,89.999999 V 30 l -25.98076,-15 25.98076,-45 -25.98076,-45 -25.98076,15.000002 V -30 H 51.961523 L 25.980762,15 51.961523,30 v 29.999998 z"
            id="border"
            sodipodi:nodetypes="cccccccccccccc" />
+        <path
+           style="fill:#afdde9;stroke-width:0.687869;stop-color:#000000"
+           d="M 155.88457,29.999997 129.90381,14.999996 H 25.980762 L 51.961524,29.999997 H 155.88457"
+           id="path998" />
         <g
            id="dungeon">
           <path
-             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
-             d="M 69.282031,59.999998 V 20 L 34.641017,0"
-             id="path1352" />
+             id="path1496"
+             style="opacity:1;fill:#ffffff;stroke:none;stroke-width:1;stroke-opacity:1;stop-color:#000000"
+             d="M 69.282031,59.999998 V 20 L 34.641017,0 43.301269,-15 69.282031,0 V -30 H 86.60254 v 20 l 34.64101,-20 v -20 l 17.32051,-9.999998 8.66026,14.999999 -8.66026,5 V -20 l 8.66026,5 -8.66026,15 -17.32051,-10 -34.64101,20 51.96152,29.999999 V 79.999998 L 121.24355,89.999999 112.5833,75 121.24355,69.999999 V 50 L 86.60254,30 v 29.999998"
+             sodipodi:nodetypes="cccccccccccccccccccccccccc" />
           <path
-             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
-             d="M 43.301269,-15 69.282031,0 v -30"
-             id="path1488" />
-          <path
-             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
-             d="m 86.60254,-30 v 20 l 34.64101,-20 v -20 l 17.32051,-9.999998"
-             id="path1490" />
-          <path
-             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
-             d="m 147.22432,-44.999999 -8.66026,5 V -20 l 8.66026,5"
-             id="path1492" />
-          <path
-             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
-             d="M 138.56406,0 121.24355,-10 86.60254,10 138.56406,39.999999 V 79.999998 L 121.24355,89.999999"
-             id="path1494" />
-          <path
-             style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1;stop-color:#000000"
-             d="m 112.5833,75 8.66025,-5.000001 V 50 L 86.60254,30 v 29.999998"
-             id="path1496" />
+             id="path627"
+             style="opacity:1;fill:none;stroke:#000000;stroke-width:1.37573976;stroke-opacity:1;stop-color:#000000"
+             d="M 69.282031,59.999998 V 20 L 34.641017,2.6126514e-8 M 43.301269,-15 69.282031,2.6126514e-8 V -30 m 17.320509,0 V -9.9999998 L 121.24355,-30 v -20 l 17.32051,-9.999998 m 8.66026,14.999999 -8.66026,5 V -20 l 8.66026,5 M 138.56406,2.6126514e-8 121.24355,-9.9999998 86.60254,10 138.56406,39.999999 V 79.999998 L 121.24355,89.999999 M 112.5833,75 121.24355,69.999999 V 50 L 86.60254,30 v 29.999998"
+             sodipodi:nodetypes="cccccccccccccccccccccccccc" />
         </g>
       </g>
     </g>

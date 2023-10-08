@@ -1,7 +1,12 @@
-geomorphs : ../assets/tile1.svg ../assets/tile2.svg ../assets/tile3.svg ../assets/tile3a.svg ../assets/elit1.svg
+
+OUTPUT_NORMAL_TILES = $(shell find . -type f -name 'tile*.svg' | sed -e 's/^/..\/assets\//')
+OUTPUT_FLIPPED_TILES = $(shell find . -type f -name 'elit*.svg' | sed -e 's/^/..\/assets\//')
+ALL_TILES = ${OUTPUT_NORMAL_TILES} ${OUTPUT_FLIPPED_TILES}
+
+geomorphs : ${ALL_TILES}
 
 clean :
-	rm ../assets/tile1.svg ../assets/tile2.svg ../assets/tile3.svg ../assets/tile3a.svg ../assets/elit1.svg
+	rm ${ALL_TILES}
 
 ../assets/%.svg : %.svg
 	inkscape -l -o $@ $<

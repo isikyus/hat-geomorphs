@@ -1,12 +1,27 @@
 
-OUTPUT_NORMAL_TILES = $(shell find . -type f -name 'tile*.svg' | sed -e 's/^/..\/assets\//')
-OUTPUT_FLIPPED_TILES = $(shell find . -type f -name 'elit*.svg' | sed -e 's/^/..\/assets\//')
-ALL_TILES = ${OUTPUT_NORMAL_TILES} ${OUTPUT_FLIPPED_TILES}
+NORMAL_TILES = $(shell find . -type f -name 'tile*.svg')
+FLIPPED_TILES = $(shell find . -type f -name 'elit*.svg')
+ALL_TILES = ${NORMAL_TILES} ${FLIPPED_TILES}
 
-geomorphs : ${ALL_TILES}
+OUTPUT_NORMAL_TILES != echo ${NORMAL_TILES} | sed -e 's/\.\//..\/assets\//g'
+OUTPUT_FLIPPED_TILES != echo ${FLIPPED_TILES} | sed -e 's/\.\//..\/assets\//g'
+ALL_OUTPUT_TILES = ${OUTPUT_NORMAL_TILES} ${OUTPUT_FLIPPED_TILES}
+
+geomorphs : ${ALL_OUTPUT_TILES} ../assets/index.json
 
 clean :
-	rm ${ALL_TILES}
+	rm ${ALL_OUTPUT_TILES}
+	rm ../assets/index.json
+
+../assets/index.json : ${ALL_TILES}
+	echo ${NORMAL_TILES} | sed -e 's/[^ ]\+/"assets\/\0",/g ; s/,$$//'
+	echo "{ " \
+		"\"H\": [`echo ${NORMAL_TILES} | sed -e 's/[^ ]\+/"assets\/\0",/g ; s/,$$//'`]," \
+		"\"T\": [`echo ${NORMAL_TILES} | sed -e 's/[^ ]\+/"assets\/\0",/g ; s/,$$//'`]," \
+		"\"P\": [`echo ${NORMAL_TILES} | sed -e 's/[^ ]\+/"assets\/\0",/g ; s/,$$//'`]," \
+		"\"F\": [`echo ${NORMAL_TILES} | sed -e 's/[^ ]\+/"assets\/\0",/g ; s/,$$//'`]," \
+		"\"H1\": [`echo ${FLIPPED_TILES} | sed -e 's/[^ ]\+/"assets\/\0",/g ; s/,$$//'`]" \
+	"}" > ../assets/index.json
 
 ../assets/%.svg : %.svg
 	inkscape -l -o $@ $<

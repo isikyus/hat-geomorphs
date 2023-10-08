@@ -24,20 +24,8 @@ let svg_serial = 0;
 
 const cols = {};
 
-const geomorph_names = [
-  'tile1',
-  'tile2',
-  'tile3',
-  'tile3a'
-];
-const tiles_for_types = {
-  H: geomorph_names,
-  F: geomorph_names,
-  T: geomorph_names,
-  P: geomorph_names,
-  H1: ['elit1']
-};
-const geomorphs = {};
+let tiles_for_types;
+let geomorphs = {};
 let black;
 
 function getSVGID()
@@ -119,7 +107,7 @@ class HatTile
   draw( S, level )
   {
     var svg = new Image();
-    svg.src = '/assets/' + this.choose_geomorph() + '.svg';
+    svg.src = this.choose_geomorph();
 
     // Save P5 transform before drawing our own.
     var oldTransform = drawingContext.getTransform();
@@ -607,19 +595,24 @@ function setup() {
   }
 
   let geomorphsLoading = [];
-  for ( let key in tiles_for_types ) {
-    for ( let name of tiles_for_types[key] ) {
-      // TODO: better to use XmlHttpRequest with its automatic parsing?
-      let parser = new DOMParser();
-      let promise = fetch('./assets/' + name + '.svg').
-        then(response => response.text()).
-        then(svg => {
-          geomorphs[key] = geomorphs[key] || {};
-          geomorphs[key][name] = parser.parseFromString(svg, 'image/svg+xml').documentElement;
-        });
-      geomorphsLoading.push(promise);
-    }
-  }
+  geomorphsLoading[0] = fetch('./assets/index.json').
+    then(response => response.json()).
+    then((data) => tiles_for_types = data).
+    then(function() {
+      for ( let key in tiles_for_types ) {
+        for ( let name of tiles_for_types[key] ) {
+          // TODO: better to use XmlHttpRequest with its automatic parsing?
+          let parser = new DOMParser();
+          let promise = fetch(name).
+            then(response => response.text()).
+            then(svg => {
+              geomorphs[key] = geomorphs[key] || {};
+              geomorphs[key][name] = parser.parseFromString(svg, 'image/svg+xml').documentElement;
+            });
+          geomorphsLoading.push(promise);
+        }
+      }
+    });
   if( count == 1 ) {
     box_height += 50;
   }

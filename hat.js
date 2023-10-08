@@ -6,6 +6,7 @@ let level;
 let scale_centre;
 let scale_start;
 let scale_ts;
+const wheel_scale_factor = 0.01;
 
 let reset_button;
 let subst_button;
@@ -756,6 +757,15 @@ function defineDependentFunctions(random_seed) {
     loop();
   }
 
+  scale = function(sc) {
+    to_screen = mul(
+      mul( ttrans( scale_centre.x, scale_centre.y ),
+        mul( [sc, 0, 0, 0, sc, 0],
+          ttrans( -scale_centre.x, -scale_centre.y ) ) ),
+      scale_ts );
+    lw_scale = mag( to_screen[0], to_screen[1] ) / 20.0;
+  }
+
   window.mouseDragged = function()
   {
     if( dragging ) {
@@ -765,12 +775,7 @@ function defineDependentFunctions(random_seed) {
       } else if( isButtonActive( scale_button ) ) {
         let sc = dist( mouseX, mouseY, width/2, height/2 ) /
           dist( scale_start.x, scale_start.y, width/2, height/2 );
-        to_screen = mul(
-          mul( ttrans( scale_centre.x, scale_centre.y ),
-            mul( [sc, 0, 0, 0, sc, 0],
-              ttrans( -scale_centre.x, -scale_centre.y ) ) ),
-          scale_ts );
-        lw_scale = mag( to_screen[0], to_screen[1] ) / 20.0;
+        scale(sc);
       }
       loop();
       return false;
@@ -781,5 +786,22 @@ function defineDependentFunctions(random_seed) {
   {
     dragging = false;
     loop();
+  }
+
+  window.mouseWheel = function(event)
+  {
+    scale_centre = transPt( inv( to_screen ), pt( width/2, height/2 ) );
+    scale_ts = [...to_screen];
+
+    let factor = event.delta * wheel_scale_factor;
+
+    // Convert sign of wheel to direction of scaling.
+    if (factor < 0) {
+      factor = -1 / factor;
+    }
+    scale(factor);
+
+    loop();
+    return false;
   }
 }

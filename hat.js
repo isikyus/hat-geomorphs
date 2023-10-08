@@ -591,7 +591,6 @@ function setup() {
   };
 
   let count = 0;
-  let geomorphsLoading = [];
   for( let [name, col] of Object.entries( cp_info ) ) {
     const label = createSpan( name );
     label.position( 10 + 70*count, box_height );
@@ -607,6 +606,7 @@ function setup() {
     }
   }
 
+  let geomorphsLoading = [];
   for ( let key in tiles_for_types ) {
     for ( let name of tiles_for_types[key] ) {
       // TODO: better to use XmlHttpRequest with its automatic parsing?

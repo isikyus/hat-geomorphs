@@ -133,9 +133,6 @@ class HatTile
       // See also https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setTransform
       drawingContext.transform(X[0], X[3], X[1], X[4], X[2], X[5]);
       drawingContext.drawImage(svg, 0, 0);
-
-      console.log(drawingContext.getTransform());
-      console.log(S);
     }
     drawingContext.setTransform(oldTransform);
   }

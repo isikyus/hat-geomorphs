@@ -28,6 +28,20 @@ let tiles_for_types;
 let geomorphs = {};
 let black;
 
+// Matrix to convert from SVG tile coordinates to the
+// co-ords of the hat shape this code is using.
+// * scale down tiles to match hatviz sizing.
+// * also translate, to account for the fact the Hatviz origin
+//   isn't at the corner of the SVG, which is the only place
+//   Inkscape lets me put it.
+let tileProjection = (function() {
+  const tileScale = 0.012,
+        scale = [ tileScale, 0, 0, 0, tileScale, 0 ],
+        translation = ttrans(-125, -359);
+  return mul(scale, translation);
+})();
+
+
 function getSVGID()
 {
   const ret = 't' + String(svg_serial).padStart( 5, '0' );
@@ -112,22 +126,12 @@ class HatTile
     // Save P5 transform before drawing our own.
     var oldTransform = drawingContext.getTransform();
     {
+      let X = mul(S, tileProjection);
+
       // Read matrix sideways to convert from affine format Hatviz
       // is using to what plain JS expects.
       // See also https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setTransform
-      drawingContext.transform(S[0], S[3], S[1], S[4], S[2], S[5]);
-
-      // Scale down tiles to match hatviz sizing.
-      const tileScale = 1/84.0,
-            Z = [ tileScale, 0, 0, 0, tileScale, 0 ];
-      drawingContext.transform(Z[0], Z[3], Z[1], Z[4], Z[2], Z[5]);
-
-      // Also translate, to account for the fact the Hatviz origin
-      // isn't at the corner of the SVG, which is the only place
-      // Inkscape lets me put it.
-      const T = ttrans(-127.380, -359.778);
-      drawingContext.transform(T[0], T[3], T[1], T[4], T[2], T[5])
-
+      drawingContext.transform(X[0], X[3], X[1], X[4], X[2], X[5]);
       drawingContext.drawImage(svg, 0, 0);
 
       console.log(drawingContext.getTransform());

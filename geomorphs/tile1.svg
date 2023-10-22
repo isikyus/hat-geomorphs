@@ -70,12 +70,12 @@
          inkscape:transform-center-x="2.3241212"
          inkscape:transform-center-y="12.990389">
         <path
-           style="opacity:1;fill:#e6e6e6;stroke:#e6e6e6;stroke-width:2;stroke-opacity:1;stop-color:#000000"
+           style="opacity:1;fill:#e6e6e6;stroke:none;stroke-width:2;stroke-opacity:1;stop-color:#000000"
            d="m 103.92354,60.786574 26.20784,45.393316 26.20784,-15.131106 0,-60.52442 -26.20784,-15.131104 26.20784,-45.393315 -26.20784,-45.393315 -26.20784,15.131105 0,30.26221 H 51.507851 l -26.207842,45.393315 26.207842,15.131104 0,30.26221 z"
            id="border"
            sodipodi:nodetypes="cccccccccccccc" />
         <path
-           style="fill:#0000ff;stroke:#0000ff;stroke-width:2.06361;stop-color:#000000"
+           style="fill:#0000ff;stroke:none;stroke-width:2.06361;stop-color:#000000"
            d="M 130.09741,15.334427 25.980762,14.999996 51.961524,29.999997 156.07817,30.334428 Z"
            id="path998"
            sodipodi:nodetypes="ccccc" />

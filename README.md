@@ -31,6 +31,9 @@ This isn't a new idea; the ["halls" of Cogmind levels][cogmind-halls] are someth
 similar. But it's not something I've seen as much in D&D maps, possibly because it
 only really works in quite large dungeons.
 
+To be clear, I'm not affiliated with Kaplan, or any of the "hat" paper authors.
+I'm just some random who's forked their code to get my geomorph idea working.
+
 
 [hatviz] https://cs.uwaterloo.ca/~csk/hat/app.html
 [daves] https://davesmapper.com

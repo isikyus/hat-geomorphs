@@ -1,7 +1,7 @@
 # Hat Geomorphs
 
 This is a modification of Craig S. Kaplan's [hatviz][hatviz] application to work
-as a geomorph-based dungeon generator, similar in concept to [Dave's Mapper][daves]
+as a geomorph-based dungeon generator, similar in concept to [Dave's Mapper][daves].
 
 The difference is that the individual geomorphs are the ["hat" tile][hat],
 from [Smith et. al. 2023][hat-paper]. Aside from making the maps look a bit

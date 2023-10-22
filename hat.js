@@ -12,8 +12,6 @@ let reset_button;
 let subst_button;
 let translate_button;
 let scale_button;
-let draw_hats;
-let draw_super;
 let radio;
 
 let dragging = false;
@@ -21,8 +19,6 @@ let uibox = true;
 let box_height = 10;
 
 let svg_serial = 0;
-
-const cols = {};
 
 let tiles_for_types;
 let geomorphs = {};
@@ -551,8 +547,6 @@ function setup() {
     radio.selected( 'H' );
     to_screen = [20, 0, 0, 0, -20, 0];
     lw_scale = 1;
-    setButtonActive( draw_hats, true );
-    setButtonActive( draw_super, true );
     loop();
   } );
   subst_button = addButton( "Build Supertiles", function() {
@@ -573,30 +567,6 @@ function setup() {
   radio.selected( 'H' );
   box_height += 40;
 
-  const cp_info = {
-    'H1' : [0, 137, 212],
-    'H' : [148, 205, 235],
-    'T' : [251, 251, 251],
-    'P' : [250, 250, 250],
-    'F' : [191, 191, 191]
-  };
-
-  let count = 0;
-  for( let [name, col] of Object.entries( cp_info ) ) {
-    const label = createSpan( name );
-    label.position( 10 + 70*count, box_height );
-    const cp = createColorPicker( color( ...col ) );
-    cp.mousePressed( function() { loop() } );
-    cp.position( 10 + 70*count, box_height + 20 );
-    cols[name] = cp;
-
-    ++count;
-    if( count == 2 ) {
-      count = 0;
-      box_height += 50;
-    }
-  }
-
   let geomorphsLoading = [];
   geomorphsLoading[0] = fetch('./assets/index.json').
     then(response => response.json()).
@@ -616,10 +586,6 @@ function setup() {
         }
       }
     });
-  if( count == 1 ) {
-    box_height += 50;
-  }
-  box_height += 20;
 
   // Fix a random seed on page load so the image is consistent each time we draw
   // it for the same base tile and number of levels.
@@ -642,19 +608,6 @@ function setup() {
     } );
 
     setButtonActive( translate_button, true );
-    box_height += 10;
-
-    draw_hats = addButton( "Draw Hats", function() {
-      setButtonActive( draw_hats, !isButtonActive( draw_hats ) );
-      loop();
-    } );
-    draw_super = addButton( "Draw Supertiles", function() {
-      setButtonActive( draw_super, !isButtonActive( draw_super ) );
-      loop();
-    } );
-
-    setButtonActive( draw_hats, true );
-    setButtonActive( draw_super, true );
     box_height += 10;
 
     addButton( "Save PNG", function () {
@@ -683,23 +636,11 @@ function setup() {
       const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
       const S = mul( ttrans( width/2, height/2 ), to_screen );
 
-      if( isButtonActive( draw_hats ) ) {
-        randomSeed(random_seed);
-        stream.push( getSVGInstance( tiles[idx].getSVGFillID(), S ) );
-      }
-      if( isButtonActive( draw_super ) ) {
-        stream.push( getSVGInstance( tiles[idx].getSVGStrokeID(), S ) );
-      }
+      randomSeed(random_seed);
+      stream.push( getSVGInstance( tiles[idx].getSVGFillID(), S ) );
       stream.push( '</svg>' );
 
       saveStrings( stream, 'output', 'svg' );
-    } );
-
-    addButton( "Save Matrices", function() {
-      const stream = [];
-      const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
-      tiles[idx].getText( stream, ident );
-      saveStrings( stream, 'output', 'txt' );
     } );
 
     box_height -= 5; // remove half the padding
@@ -716,16 +657,9 @@ function defineDependentFunctions(random_seed) {
     translate( width/2, height/2 );
     const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
 
-    if( isButtonActive( draw_hats ) ) {
-      randomSeed(random_seed);
-      tiles[idx].draw( to_screen, level );
-    }
+    randomSeed(random_seed);
+    tiles[idx].draw( to_screen, level );
 
-    if( isButtonActive( draw_super ) ) {
-      for( let lev = level - 1; lev >= 0; --lev ) {
-        tiles[idx].draw( to_screen, lev );
-      }
-    }
     pop();
 
     if( uibox ) {

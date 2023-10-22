@@ -22,7 +22,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
-     showgrid="false"
+     showgrid="true"
      inkscape:snap-bbox="true"
      inkscape:snap-center="true"
      fit-margin-top="0.2"
@@ -47,9 +47,11 @@
        empcolor="#03ff92"
        empopacity="0.25098039"
        empspacing="6"
-       spacingy="10"
-       originx="-24.414737"
-       originy="76.566023" />
+       spacingy="3.333331"
+       originx="136.36608"
+       originy="50.033841"
+       gridanglex="60"
+       gridanglez="60" />
   </sodipodi:namedview>
   <defs
      id="defs2" />

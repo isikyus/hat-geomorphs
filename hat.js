@@ -643,13 +643,6 @@ function setup() {
       saveStrings( stream, 'output', 'svg' );
     } );
 
-    addButton( "Save Matrices", function() {
-      const stream = [];
-      const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
-      tiles[idx].getText( stream, ident );
-      saveStrings( stream, 'output', 'txt' );
-    } );
-
     box_height -= 5; // remove half the padding
   }).
     catch(e => alert("Error loading geomorphs:\n" + e));

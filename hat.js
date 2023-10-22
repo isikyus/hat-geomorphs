@@ -20,8 +20,6 @@ let box_height = 10;
 
 let svg_serial = 0;
 
-const cols = {};
-
 let tiles_for_types;
 let geomorphs = {};
 let black;
@@ -569,30 +567,6 @@ function setup() {
   radio.selected( 'H' );
   box_height += 40;
 
-  const cp_info = {
-    'H1' : [0, 137, 212],
-    'H' : [148, 205, 235],
-    'T' : [251, 251, 251],
-    'P' : [250, 250, 250],
-    'F' : [191, 191, 191]
-  };
-
-  let count = 0;
-  for( let [name, col] of Object.entries( cp_info ) ) {
-    const label = createSpan( name );
-    label.position( 10 + 70*count, box_height );
-    const cp = createColorPicker( color( ...col ) );
-    cp.mousePressed( function() { loop() } );
-    cp.position( 10 + 70*count, box_height + 20 );
-    cols[name] = cp;
-
-    ++count;
-    if( count == 2 ) {
-      count = 0;
-      box_height += 50;
-    }
-  }
-
   let geomorphsLoading = [];
   geomorphsLoading[0] = fetch('./assets/index.json').
     then(response => response.json()).
@@ -612,10 +586,6 @@ function setup() {
         }
       }
     });
-  if( count == 1 ) {
-    box_height += 50;
-  }
-  box_height += 20;
 
   // Fix a random seed on page load so the image is consistent each time we draw
   // it for the same base tile and number of levels.

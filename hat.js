@@ -12,8 +12,6 @@ let reset_button;
 let subst_button;
 let translate_button;
 let scale_button;
-let draw_hats;
-let draw_super;
 let radio;
 
 let dragging = false;
@@ -551,8 +549,6 @@ function setup() {
     radio.selected( 'H' );
     to_screen = [20, 0, 0, 0, -20, 0];
     lw_scale = 1;
-    setButtonActive( draw_hats, true );
-    setButtonActive( draw_super, true );
     loop();
   } );
   subst_button = addButton( "Build Supertiles", function() {
@@ -644,19 +640,6 @@ function setup() {
     setButtonActive( translate_button, true );
     box_height += 10;
 
-    draw_hats = addButton( "Draw Hats", function() {
-      setButtonActive( draw_hats, !isButtonActive( draw_hats ) );
-      loop();
-    } );
-    draw_super = addButton( "Draw Supertiles", function() {
-      setButtonActive( draw_super, !isButtonActive( draw_super ) );
-      loop();
-    } );
-
-    setButtonActive( draw_hats, true );
-    setButtonActive( draw_super, true );
-    box_height += 10;
-
     addButton( "Save PNG", function () {
       uibox = false;
       draw();
@@ -683,13 +666,8 @@ function setup() {
       const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
       const S = mul( ttrans( width/2, height/2 ), to_screen );
 
-      if( isButtonActive( draw_hats ) ) {
-        randomSeed(random_seed);
-        stream.push( getSVGInstance( tiles[idx].getSVGFillID(), S ) );
-      }
-      if( isButtonActive( draw_super ) ) {
-        stream.push( getSVGInstance( tiles[idx].getSVGStrokeID(), S ) );
-      }
+      randomSeed(random_seed);
+      stream.push( getSVGInstance( tiles[idx].getSVGFillID(), S ) );
       stream.push( '</svg>' );
 
       saveStrings( stream, 'output', 'svg' );
@@ -716,16 +694,9 @@ function defineDependentFunctions(random_seed) {
     translate( width/2, height/2 );
     const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
 
-    if( isButtonActive( draw_hats ) ) {
-      randomSeed(random_seed);
-      tiles[idx].draw( to_screen, level );
-    }
+    randomSeed(random_seed);
+    tiles[idx].draw( to_screen, level );
 
-    if( isButtonActive( draw_super ) ) {
-      for( let lev = level - 1; lev >= 0; --lev ) {
-        tiles[idx].draw( to_screen, lev );
-      }
-    }
     pop();
 
     if( uibox ) {

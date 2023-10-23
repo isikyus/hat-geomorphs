@@ -113,6 +113,10 @@
              d="M 167.05798 335.8087 L 167.05883 335.81016 "
              transform="matrix(0,-0.36399781,-0.36399781,0,234.88158,106.36602)" />
           <path
+             style="fill:none;fill-opacity:0.99888;stroke:#000000;stroke-width:2.75148;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.275148, 0.275148;stroke-dashoffset:0;stop-color:#000000"
+             d="M 64.662725,27.927335 108.28585,2.7415109 V -12.369982"
+             id="path1749" />
+          <path
              id="path2106"
              style="fill:none;stroke:url(#radialGradient937);stroke-width:1.37574;stop-color:#000000;fill-opacity:1"
              d="m 103.95731,-60.174654 4.3651,2.516971 V 2.7495811 L 55.941218,32.953211 51.57612,30.436237 m 0,30.203631 4.365098,-7.550903 52.381192,-30.20363 v 30.20363 l 26.19058,15.101815 v 30.20363 l -4.36509,7.55091 m 26.1906,-15.101822 -4.3651,-2.516964 V 58.122903 l 4.3651,2.516965 m 0,-30.203631 -4.3651,7.550913 -17.46041,10.067877 -8.73018,-5.033939 V -67.725561 l 4.36509,-7.550907"
@@ -156,6 +160,18 @@
              d="m 312.28682,299.7237 h 55.35137"
              transform="matrix(0,-0.36399781,-0.36399781,0,234.88158,106.36602)"
              id="path14408" />
+          <path
+             style="fill:none;fill-opacity:0.99888;stroke:#000000;stroke-width:2.75147952;stop-color:#000000;stroke-miterlimit:4;stroke-dasharray:0.27514795, 0.27514795;stroke-dashoffset:0;stroke-linejoin:bevel"
+             d="M 108.28585,38.001662 V 22.890169 L 90.836599,32.9645"
+             id="path1615" />
+          <path
+             style="fill:none;fill-opacity:0.99888;stroke:#000000;stroke-width:2.75148;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.275148, 0.275148;stroke-dashoffset:0;stop-color:#000000"
+             d="M 134.45972,83.336145 V 68.224651 l -4.36231,-2.51858"
+             id="path1864" />
+          <path
+             style="fill:none;fill-opacity:0.99888;stroke:#000000;stroke-width:2.75148;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:0.275148, 0.275148;stroke-dashoffset:0;stop-color:#000000"
+             d="M 125.7351,-32.51864 V -52.667302"
+             id="path1866" />
         </g>
         <path
            style="fill:#ffffff;stroke:none;stroke-width:0.68786988;stop-color:#000000"

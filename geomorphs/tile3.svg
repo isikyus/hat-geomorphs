@@ -103,89 +103,94 @@
              d="M 138.82204,0.22293001 134.45972,-2.2956546 121.37279,20.371588 95.198913,5.2600919 V -24.962894 h 34.898497 l 17.44925,10.074328"
              id="path1862" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8654"
              cx="34.113014"
              cy="-131.71667"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8656"
              cx="27.572336"
              cy="-128.25946"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8658"
              cx="27.671867"
              cy="-114.51533"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8660"
              cx="31.579321"
              cy="-116.06993"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8664"
              cx="49.009155"
              cy="-117.64738"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8666"
              cx="27.723099"
              cy="-121.50102"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8668"
              cx="37.643856"
              cy="-126.90459"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8672"
              cx="53.670322"
              cy="-125.28686"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8674"
              cx="46.995537"
              cy="-126.90134"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8678"
              cx="38.839722"
              cy="-114.74704"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8680"
              cx="35.147522"
              cy="-123.31303"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
           <circle
-             style="fill:#999999;stroke:#000000;stroke-width:0.68787;stop-color:#000000"
+             style="fill:#e6e6e6;stroke:#ffffff;stroke-width:0.68787;stop-color:#000000"
              id="use8682"
              cx="43.849873"
              cy="-120.21757"
              r="4.87637"
              transform="matrix(0,-1,-1,0,0,0)" />
+          <path
+             id="circle919"
+             style="fill:none;stroke:#000000;stroke-width:0.687869;stop-color:#000000"
+             d="m 136.59293,-34.112962 c -0.003,2.275671 -1.57849,4.24712 -3.7978,4.750456 0.22498,0.570013 0.34051,1.177325 0.34053,1.79013 -4e-5,2.693082 -2.1832,4.876246 -4.87629,4.876289 -1.29939,-3.64e-4 -2.5449,-0.519373 -3.46011,-1.441773 -0.89868,0.828477 -2.07572,1.289247 -3.29802,1.291057 -1.30404,-7.28e-4 -2.55353,-0.523393 -3.46935,-1.451726 -0.91859,0.958814 -2.18845,1.501571 -3.51628,1.502911 -2.69336,3.49e-4 -4.87695,-2.182928 -4.877,-4.876289 0.002,-1.358764 0.57055,-2.655139 1.56903,-3.576705 -0.008,-0.110004 -0.0132,-0.220262 -0.0142,-0.330586 0.001,-1.113178 0.38332,-2.192425 1.08275,-3.058434 -1.4899,-0.875531 -2.40513,-2.474217 -2.40579,-4.202325 4e-5,-2.693362 2.18363,-4.876639 4.87699,-4.876293 0.20084,1.78e-4 0.40146,0.01278 0.60075,0.03768 -0.003,-0.05706 -0.006,-0.114186 -0.007,-0.171334 1.9e-4,-0.278331 0.0242,-0.556138 0.0718,-0.83037 -1.62068,-0.83555 -2.63981,-2.505481 -2.64182,-4.328873 4e-5,-2.693082 2.18321,-4.876249 4.87629,-4.876293 1.0084,8.4e-5 1.99198,0.312794 2.81529,0.895067 -0.0331,-0.225064 -0.0505,-0.452169 -0.0519,-0.679653 -3.5e-4,-2.693362 2.18292,-4.876959 4.87628,-4.877003 2.69337,4.4e-5 4.87665,2.183641 4.8763,4.877003 -10e-4,0.889272 -0.24559,1.76128 -0.70667,2.521678 1.44224,0.887285 2.32093,2.459246 2.32119,4.152564 -0.002,2.160785 -1.42515,4.062805 -3.49779,4.673673 1.60349,0.471549 2.85376,1.731476 3.31295,3.338545 0.0412,-0.0025 0.0825,-0.0043 0.1237,-0.0057 2.69309,4.4e-5 4.87625,2.183208 4.8763,4.876293 z"
+             sodipodi:nodetypes="ccccccccccccccccccccccccccccc" />
         </g>
       </g>
     </g>

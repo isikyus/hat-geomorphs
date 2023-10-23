@@ -2,15 +2,19 @@
 NORMAL_TILES = $(shell find . -type f -name 'tile*.svg')
 FLIPPED_TILES = $(shell find . -type f -name 'elit*.svg')
 ALL_TILES = ${NORMAL_TILES} ${FLIPPED_TILES}
+ALL_SVGS = ${ALL_TILES} legend.svg
 
 OUTPUT_NORMAL_TILES != echo ${NORMAL_TILES} | sed -e 's/\.\//..\/assets\//g'
 OUTPUT_FLIPPED_TILES != echo ${FLIPPED_TILES} | sed -e 's/\.\//..\/assets\//g'
 ALL_OUTPUT_TILES = ${OUTPUT_NORMAL_TILES} ${OUTPUT_FLIPPED_TILES}
+ALL_OUTPUT_SVGS = ${ALL_OUTPUT_TILES} ../assets/legend.svg
+
+output_svg : geomorphs ../assets/legend.svg
 
 geomorphs : ${ALL_OUTPUT_TILES} ../assets/index.json
 
 clean :
-	rm ${ALL_OUTPUT_TILES}
+	rm ${ALL_OUTPUT_SVGS}
 	rm ../assets/index.json
 
 ../assets/index.json : ${ALL_TILES}

@@ -643,7 +643,20 @@ function setup() {
       saveStrings( stream, 'output', 'svg' );
     } );
 
-    box_height -= 5; // remove half the padding
+
+    // Add a space before the legend
+    box_height += 10;
+
+    let legendHeading = createP('Legend');
+    legendHeading.position( 10+20, box_height );
+    legendHeading.size( 125, 25 );
+    box_height += 35;
+
+    let legend = createImg("assets/legend.svg", 'TODO');
+    legend.position( 10, box_height );
+    legend.size( 125, 283 );
+    box_height += 283;
+
   }).
     catch(e => alert("Error loading geomorphs:\n" + e));
 }

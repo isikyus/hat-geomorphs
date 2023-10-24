@@ -1,4 +1,5 @@
-let to_screen = [20, 0, 0, 0, -20, 0];
+const original_to_screen = [100, 0, -200, 0, -100, 0];
+let to_screen = original_to_screen;
 let lw_scale = 1;
 let tiles;
 let level;
@@ -545,7 +546,7 @@ function setup() {
     tiles = [H_init, T_init, P_init, F_init];
     level = 1;
     radio.selected( 'H' );
-    to_screen = [20, 0, 0, 0, -20, 0];
+    to_screen = original_to_screen;
     lw_scale = 1;
     loop();
   } );

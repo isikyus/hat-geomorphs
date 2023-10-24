@@ -663,6 +663,11 @@ function setup() {
     infoLink.size(125, 25);
     box_height += 30;
 
+    let tilesLink = createA('tile_sampler.html', "Tile Set");
+    tilesLink.position(10+20, box_height);
+    tilesLink.size(125, 25);
+    box_height += 30;
+
   }).
     catch(e => alert("Error loading geomorphs:\n" + e));
 }

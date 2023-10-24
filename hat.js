@@ -540,6 +540,11 @@ function reset() {
     radio.selected( 'H' );
     to_screen = original_to_screen;
     lw_scale = 1;
+
+    // Build one level of recursion so we have
+    // a reasonably-sized starting map.
+    buildTiles();
+
     loop();
 }
 

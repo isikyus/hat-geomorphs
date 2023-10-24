@@ -35,10 +35,10 @@ To be clear, I'm not affiliated with Kaplan, or any of the "hat" paper authors.
 I'm just some random who's forked their code to get my geomorph idea working.
 
 
-[hatviz] https://cs.uwaterloo.ca/~csk/hat/app.html
-[daves] https://davesmapper.com
-[hat-paper] https://arxiv.org/abs/2303.10798
-[cogmind-halls] https://www.gridsagegames.com/blog/2014/06/mapgen-tunneling-algorithm/
+[hatviz]: https://cs.uwaterloo.ca/~csk/hat/app.html
+[daves]: https://davesmapper.com
+[hat-paper]: https://arxiv.org/abs/2303.10798
+[cogmind-halls]: https://www.gridsagegames.com/blog/2014/06/mapgen-tunneling-algorithm/
 
 ### hatviz
 

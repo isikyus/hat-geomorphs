@@ -618,7 +618,7 @@ function setup() {
       uibox = true;
       draw();
     } );
-
+/*
     addButton( "Save SVG", function () {
       svg_serial = 0;
       for( let t of tiles ) {
@@ -643,7 +643,7 @@ function setup() {
 
       saveStrings( stream, 'output', 'svg' );
     } );
-
+*/
 
     // Add a space before the legend
     box_height += 10;

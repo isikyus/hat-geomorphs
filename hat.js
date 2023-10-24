@@ -549,7 +549,7 @@ function setup() {
     lw_scale = 1;
     loop();
   } );
-  subst_button = addButton( "Build Supertiles", function() {
+  subst_button = addButton( "Expand Map", function() {
     const patch = constructPatch( ...tiles );
     tiles = constructMetatiles( patch );
     ++level;

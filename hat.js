@@ -657,6 +657,12 @@ function setup() {
     legend.size( 125, 283 );
     box_height += 283;
 
+    box_height += 30;
+    let infoLink = createA('https://github.com/isikyus/hat-geomorphs#hat-geomorphs', "What is this?");
+    infoLink.position(10+10, box_height);
+    infoLink.size(125, 25);
+    box_height += 30;
+
   }).
     catch(e => alert("Error loading geomorphs:\n" + e));
 }

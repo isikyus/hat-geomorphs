@@ -678,8 +678,14 @@ function setup() {
     box_height += 30;
 
     let tilesLink = createA('tile_sampler.html', "Tile Set");
-    tilesLink.position(10+20, box_height);
+    tilesLink.position(10+10, box_height);
     tilesLink.size(125, 25);
+    box_height += 40;
+
+    let licenseLink = createA('LICENSE.txt', "License");
+    licenseLink.position(10+30, box_height);
+    licenseLink.size(125, 25);
+    licenseLink.style('font-size: small');
     box_height += 30;
 
     reset();

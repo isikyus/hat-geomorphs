@@ -25,6 +25,8 @@ let tiles_for_types;
 let geomorphs = {};
 let black;
 
+let initial_seed;
+
 // Matrix to convert from SVG tile coordinates to the
 // co-ords of the hat shape this code is using.
 // * scale down tiles to match hatviz sizing.
@@ -555,12 +557,17 @@ function buildTiles() {
     loop();
 }
 
+function shuffleTiles() {
+  initial_seed = random() * 1000 * 1000;
+}
+
 function setup() {
   createCanvas( windowWidth, windowHeight );
 
   black = color( 'black' );
 
   reset_button = addButton( "Reset", reset );
+  shuffle_button = addButton( "Shuffle Tiles", shuffleTiles );
   subst_button = addButton( "Expand Map", buildTiles );
   box_height += 10;
 
@@ -596,12 +603,12 @@ function setup() {
 
   // Fix a random seed on page load so the image is consistent each time we draw
   // it for the same base tile and number of levels.
-  const random_seed = random();
+  shuffleTiles();
 
   console.log("Loading geomorphs...");
   Promise.all(geomorphsLoading).then(function() {
     console.log("Geomorphs loaded!");
-    defineDependentFunctions(random_seed);
+    defineDependentFunctions();
 
     translate_button = addButton( "Translate", function() {
       setButtonActive( translate_button, true );
@@ -643,7 +650,7 @@ function setup() {
       const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
       const S = mul( ttrans( width/2, height/2 ), to_screen );
 
-      randomSeed(random_seed);
+      randomSeed(initial_seed);
       stream.push( getSVGInstance( tiles[idx].getSVGFillID(), S ) );
       stream.push( '</svg>' );
 
@@ -680,7 +687,7 @@ function setup() {
     catch(e => alert("Error loading geomorphs:\n" + e));
 }
 
-function defineDependentFunctions(random_seed) {
+function defineDependentFunctions() {
   window.draw = function()
   {
     background( 255 );
@@ -689,7 +696,7 @@ function defineDependentFunctions(random_seed) {
     translate( width/2, height/2 );
     const idx = {'H':0, 'T':1, 'P':2, 'F':3}[radio.value()];
 
-    randomSeed(random_seed);
+    randomSeed(initial_seed);
     tiles[idx].draw( to_screen, level );
 
     pop();

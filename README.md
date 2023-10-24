@@ -19,8 +19,8 @@ weird, this does two things:
 
   I've added a blue stripe to the non-reflected tiles that will run along these
   long-range lines without connecting to the rest of the dungeon. The reflected
-  tiles use different geomorphs (currently just one), which connect these blue
-  "canals" to the rest of the dungeon.
+  tiles use different geomorphs, which connect these blue "canal" passages to
+  the rest of the dungeon.
 
 This means adventurers and monsters who want to travel quickly can use the
 canal system as a shortcut, rather than crawling through the more maze-y

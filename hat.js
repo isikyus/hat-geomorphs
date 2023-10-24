@@ -534,28 +534,29 @@ function addButton( name, f )
   return ret;
 }
 
-function setup() {
-  createCanvas( windowWidth, windowHeight );
-
-  tiles = [H_init, T_init, P_init, F_init];
-  level = 1;
-
-  black = color( 'black' );
-
-  reset_button = addButton( "Reset", function() {
+function reset() {
     tiles = [H_init, T_init, P_init, F_init];
     level = 1;
     radio.selected( 'H' );
     to_screen = original_to_screen;
     lw_scale = 1;
     loop();
-  } );
-  subst_button = addButton( "Expand Map", function() {
+}
+
+function buildTiles() {
     const patch = constructPatch( ...tiles );
     tiles = constructMetatiles( patch );
     ++level;
     loop();
-  } );
+}
+
+function setup() {
+  createCanvas( windowWidth, windowHeight );
+
+  black = color( 'black' );
+
+  reset_button = addButton( "Reset", reset );
+  subst_button = addButton( "Expand Map", buildTiles );
   box_height += 10;
 
   radio = createRadio();
@@ -669,6 +670,7 @@ function setup() {
     tilesLink.size(125, 25);
     box_height += 30;
 
+    reset();
   }).
     catch(e => alert("Error loading geomorphs:\n" + e));
 }
